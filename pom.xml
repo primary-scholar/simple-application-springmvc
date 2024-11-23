@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.mimu.application</groupId>
-  <artifactId>spring-application-springmvc</artifactId>
+  <artifactId>simple-application-springmvc</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>spring-application-springmvc</name>
+  <name>simple-application-springmvc</name>
   <url>http://maven.apache.org</url>
 
   <properties>
