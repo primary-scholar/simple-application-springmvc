@@ -1,4 +1,4 @@
-package com.mimu.application.application;
+package com.application.springmvc.application;
 
 import com.mimu.common.log.springmvc.config.LogTraceConfig;
 import org.springframework.context.annotation.Configuration;

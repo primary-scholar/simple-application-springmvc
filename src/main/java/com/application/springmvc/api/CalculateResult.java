@@ -1,4 +1,4 @@
-package com.mimu.application.api;
+package com.application.springmvc.api;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

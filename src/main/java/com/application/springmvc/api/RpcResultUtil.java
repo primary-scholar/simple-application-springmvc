@@ -1,4 +1,4 @@
-package com.mimu.application.api;
+package com.application.springmvc.api;
 
 public class RpcResultUtil {
 

@@ -1,4 +1,4 @@
-package com.mimu.application.api;
+package com.application.springmvc.api;
 
 import lombok.Getter;
 import lombok.Setter;

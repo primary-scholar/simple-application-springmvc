@@ -1,4 +1,4 @@
-package com.mimu.application;
+package com.application.springmvc;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
