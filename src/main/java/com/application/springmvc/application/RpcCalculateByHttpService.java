@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RpcCalculateByHttpService {
-    private static final String RPC_GET_URL = "http://localhost:8082/api/local/num/add?first=%s&second=%s&description=%s";
-    private static final String RPC_POST_URL = "http://localhost:8082/api/local/num/multi";
+    private static final String RPC_GET_URL = "http://localhost:8082/api/cal/num/add?first=%s&second=%s&description=%s";
+    private static final String RPC_POST_URL = "http://localhost:8082/api/cal/num/multi";
 
     @Autowired
     private CommonHttpClient commonHttpClient;
