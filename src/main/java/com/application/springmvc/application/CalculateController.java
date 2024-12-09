@@ -6,7 +6,6 @@ import com.application.springmvc.api.CalculateResult;
 import com.application.springmvc.api.RpcResult;
 import com.application.springmvc.api.RpcResultUtil;
 import com.application.springmvc.api.calculateParam;
-import com.mimu.common.log.http.CommonHttpClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
