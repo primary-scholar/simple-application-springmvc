@@ -18,16 +18,27 @@ public class RpcCalculateByHttpService {
     private CommonHttpClient commonHttpClient;
 
     public CalculateResult rpcGetResult(calculateParam param) {
-        String rpcResult = commonHttpClient.get(String.format(RPC_GET_URL, param.getFirst(), param.getSecond(), param.getDescription()));
-        RpcResult<CalculateResult> parsedObject = JSONObject.parseObject(rpcResult,new TypeReference<RpcResult<CalculateResult>>(){});
-        CalculateResult data = parsedObject.getData();
-        return data;
+        try {
+            String rpcResult = commonHttpClient.get(String.format(RPC_GET_URL, param.getFirst(), param.getSecond(),
+                    param.getDescription()));
+            RpcResult<CalculateResult> parsedObject = JSONObject.parseObject(rpcResult,
+                    new TypeReference<RpcResult<CalculateResult>>() {
+            });
+            return parsedObject.getData();
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public CalculateResult rpcPostResult(calculateParam param) {
-        String rpcResult = commonHttpClient.post(RPC_POST_URL,JSONObject.toJSONString(param));
-        RpcResult<CalculateResult> parsedObject = JSONObject.parseObject(rpcResult,new TypeReference<RpcResult<CalculateResult>>(){});
-        CalculateResult data = parsedObject.getData();
-        return data;
+        try {
+            String rpcResult = commonHttpClient.post(RPC_POST_URL, JSONObject.toJSONString(param));
+            RpcResult<CalculateResult> parsedObject = JSONObject.parseObject(rpcResult,
+                    new TypeReference<RpcResult<CalculateResult>>() {
+            });
+            return parsedObject.getData();
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

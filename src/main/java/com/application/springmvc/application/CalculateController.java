@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Objects;
+
 @RestController
 public class CalculateController {
     private static final Logger LOGGER = LoggerFactory.getLogger(CalculateController.class);
@@ -43,7 +45,7 @@ public class CalculateController {
     public RpcResult getRemoteMethod(calculateParam param) {
         LOGGER.info("get param:{}", JSONObject.toJSONString(param));
         CalculateResult calculateResult = rpcCalculateByHttpService.rpcGetResult(param);
-        return RpcResultUtil.success(calculateResult);
+        return Objects.isNull(calculateResult) ? RpcResultUtil.fail() : RpcResultUtil.success(calculateResult);
     }
 
 
@@ -51,8 +53,9 @@ public class CalculateController {
     public String postRemoteMethod(@RequestBody calculateParam param) {
         LOGGER.info("post param:{}", JSONObject.toJSONString(param));
         CalculateResult calculateResult = rpcCalculateByHttpService.rpcPostResult(param);
-        RpcResult<CalculateResult> success = RpcResultUtil.success(calculateResult);
-        return JSONObject.toJSONString(success);
+        RpcResult<CalculateResult> result = Objects.isNull(calculateResult) ? RpcResultUtil.fail() :
+                RpcResultUtil.success(calculateResult);
+        return JSONObject.toJSONString(result);
     }
 
 }
