@@ -58,4 +58,13 @@ public class CalculateController {
         return JSONObject.toJSONString(result);
     }
 
+    @RequestMapping(value = "/api/cal/remote/num/multi/form", method = RequestMethod.POST)
+    public String postRemoteMethodWithForm(calculateParam param) {
+        LOGGER.info("post param:{}", JSONObject.toJSONString(param));
+        CalculateResult calculateResult = rpcCalculateByHttpService.rpcPostResult(param);
+        RpcResult<CalculateResult> result = Objects.isNull(calculateResult) ? RpcResultUtil.fail() :
+                RpcResultUtil.success(calculateResult);
+        return JSONObject.toJSONString(result);
+    }
+
 }
