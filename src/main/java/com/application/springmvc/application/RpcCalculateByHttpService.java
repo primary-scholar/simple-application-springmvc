@@ -11,8 +11,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RpcCalculateByHttpService {
-    private static final String RPC_GET_URL = "http://localhost:8082/api/cal/num/add?first=%s&second=%s&description=%s";
-    private static final String RPC_POST_URL = "http://localhost:8082/api/cal/num/multi";
+    private static final String RPC_GET_URL = "http://localhost:8082/api/cal/remote/num/add?first=%s&second=%s" +
+            "&description=%s";
+    private static final String RPC_POST_URL = "http://localhost:8082/api/cal/remote/num/multi";
 
     @Autowired
     private CommonHttpClient commonHttpClient;
@@ -23,7 +24,7 @@ public class RpcCalculateByHttpService {
                     param.getDescription()));
             RpcResult<CalculateResult> parsedObject = JSONObject.parseObject(rpcResult,
                     new TypeReference<RpcResult<CalculateResult>>() {
-            });
+                    });
             return parsedObject.getData();
         } catch (Exception e) {
             return null;
@@ -35,7 +36,7 @@ public class RpcCalculateByHttpService {
             String rpcResult = commonHttpClient.post(RPC_POST_URL, JSONObject.toJSONString(param));
             RpcResult<CalculateResult> parsedObject = JSONObject.parseObject(rpcResult,
                     new TypeReference<RpcResult<CalculateResult>>() {
-            });
+                    });
             return parsedObject.getData();
         } catch (Exception e) {
             return null;
