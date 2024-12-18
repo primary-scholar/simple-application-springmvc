@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 public class NumberOperationHttpService {
     private static final String RPC_GET_URL = "http://localhost:8082/api/num/gen?number=%s&p1=%s";
     private static final String RPC_POST_URL = "http://localhost:8082/api/num/cal";
+    private static final String RPC_POST_LOCAL_URL = "http://localhost:8082/api/num/cal/mvc/local";
 
     @Autowired
     private CommonHttpClient commonHttpClient;
@@ -34,6 +35,18 @@ public class NumberOperationHttpService {
     public NumberCalculateResult numberOperationPost(NumberCalculateParam param) {
         try {
             String rpcResult = commonHttpClient.post(RPC_POST_URL, JSONObject.toJSONString(param));
+            RpcResult<NumberCalculateResult> parsedObject = JSONObject.parseObject(rpcResult,
+                    new TypeReference<RpcResult<NumberCalculateResult>>() {
+                    });
+            return parsedObject.getData();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public NumberCalculateResult numberOperationPostInMvc(NumberCalculateParam param) {
+        try {
+            String rpcResult = commonHttpClient.post(RPC_POST_LOCAL_URL, JSONObject.toJSONString(param));
             RpcResult<NumberCalculateResult> parsedObject = JSONObject.parseObject(rpcResult,
                     new TypeReference<RpcResult<NumberCalculateResult>>() {
                     });
