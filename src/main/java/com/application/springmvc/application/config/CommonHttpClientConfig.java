@@ -1,4 +1,4 @@
-package com.application.springmvc.application;
+package com.application.springmvc.application.config;
 
 import com.mimu.common.log.http.CommonHttpClient;
 import com.mimu.common.log.http.PoolingHttpConnectionManagerConfig;

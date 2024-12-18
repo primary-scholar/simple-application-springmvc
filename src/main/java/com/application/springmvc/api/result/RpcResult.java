@@ -1,4 +1,4 @@
-package com.application.springmvc.api;
+package com.application.springmvc.api.result;
 
 import lombok.Getter;
 import lombok.Setter;
